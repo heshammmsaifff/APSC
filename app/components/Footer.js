@@ -86,8 +86,8 @@ export default function Footer() {
             </p>
             <div
               className={`flex ${
-                isArabic ? "justify-end" : "justify-start"
-              } space-x-4 ${isArabic ? "space-x-reverse" : ""}`}
+                isArabic ? "flex-row-reverse" : "flex-row"
+              } gap-4`}
             >
               <a
                 href="#"
