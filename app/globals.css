@@ -11,3 +11,8 @@ html[lang="en"],
 body[dir="ltr"] {
   font-family: "Alan Sans", sans-serif;
 }
+
+html,
+body {
+  overflow-x: hidden !important;
+}
