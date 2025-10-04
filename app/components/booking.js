@@ -36,7 +36,7 @@ export default function Booking() {
             }`}
           />
           <p className="text-gray-600 mb-6 text-lg">{desc}</p>
-          <Link href="/contact">
+          <Link href="/book">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
