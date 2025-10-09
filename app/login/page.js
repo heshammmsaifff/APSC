@@ -44,16 +44,25 @@ export default function LoginRegisterPage() {
       } else {
         // إنشاء حساب جديد
         const phoneFull = `${form.countryCode}${form.phone}`;
-        const { data, error, message } = await signUp(
+        const { data, error } = await signUp(
           form.email,
           form.password,
           form.name,
           phoneFull
         );
 
-        if (error) setError(error.message);
-        else if (message) alert(message);
-        else router.push("/");
+        if (error) {
+          setError(error.message);
+        } else {
+          toast.success(
+            t(
+              "Account created successfully! Please check your email to verify your account.",
+              "تم إنشاء الحساب بنجاح! من فضلك تحقق من بريدك الإلكتروني لتأكيد الحساب."
+            ),
+            { duration: 6000 }
+          );
+          setIsLogin(true); // رجعه لصفحة تسجيل الدخول
+        }
       }
     } catch (err) {
       console.error(err);

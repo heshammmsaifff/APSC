@@ -86,7 +86,9 @@ export default function ProfilePage() {
           </div>
           <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
             <Phone className="text-green-600 w-5 h-5" />
-            <span className="text-gray-700">{phone}</span>
+            <span className="text-gray-700" dir="ltr">
+              {phone}
+            </span>
           </div>
         </div>
 

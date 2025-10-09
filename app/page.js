@@ -26,13 +26,13 @@ export default function Home() {
   // عرض الصفحة للجميع (سواء مسجل دخول أو لا)
   return (
     <>
-      <Navbar user={user} />
+      {/* <Navbar user={user} /> */}
       <Hero />
       <Booking />
       <BestSelling />
       <Services />
       <ContactSection />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
