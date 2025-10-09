@@ -3,7 +3,7 @@ import "./globals.css";
 import { AuthProvider } from "../contexts/AuthContext";
 import { LangProvider } from "./context/LangContext";
 import LayoutWrapper from "./components/LayoutWrapper";
-import { Toaster } from "react-hot-toast"; // ✅ لإظهار التنبيهات
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "APSC",
@@ -12,38 +12,34 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <AuthProvider>
-          <LangProvider>
-            <LayoutWrapper>{children}</LayoutWrapper>
-            <Toaster
-              position="top-center"
-              toastOptions={{
-                style: {
-                  background: "#333",
-                  color: "#fff",
-                  borderRadius: "10px",
-                  padding: "12px 16px",
-                  fontSize: "15px",
-                },
-                success: {
-                  iconTheme: {
-                    primary: "#4ade80", // أخضر جميل
-                    secondary: "#333",
-                  },
-                },
-                error: {
-                  iconTheme: {
-                    primary: "#f87171", // أحمر ناعم
-                    secondary: "#333",
-                  },
-                },
-              }}
-            />
-          </LangProvider>
-        </AuthProvider>
-      </body>
-    </html>
+    <AuthProvider>
+      <LangProvider>
+        <LayoutWrapper>{children}</LayoutWrapper>
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: "#333",
+              color: "#fff",
+              borderRadius: "10px",
+              padding: "12px 16px",
+              fontSize: "15px",
+            },
+            success: {
+              iconTheme: {
+                primary: "#4ade80", // أخضر جميل
+                secondary: "#333",
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: "#f87171", // أحمر ناعم
+                secondary: "#333",
+              },
+            },
+          }}
+        />
+      </LangProvider>
+    </AuthProvider>
   );
 }

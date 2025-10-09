@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { Mail, Lock, Loader2, Eye, EyeOff, User, Phone } from "lucide-react";
 import { useLang } from "../context/LangContext";
+import { toast } from "react-hot-toast";
 
 export default function LoginRegisterPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -39,8 +40,18 @@ export default function LoginRegisterPage() {
       if (isLogin) {
         // تسجيل الدخول
         const { error } = await signIn(form.email, form.password);
-        if (error) setError(error.message);
-        else router.push("/");
+        if (error) {
+          toast.error(
+            t(error.message || "Login failed.", "فشل تسجيل الدخول."),
+            { duration: 4000 }
+          );
+          setError(error.message);
+        } else {
+          toast.success(t("Login successful!", "تم تسجيل الدخول بنجاح!"), {
+            duration: 3000,
+          });
+          router.push("/");
+        }
       } else {
         // إنشاء حساب جديد
         const phoneFull = `${form.countryCode}${form.phone}`;
@@ -52,6 +63,10 @@ export default function LoginRegisterPage() {
         );
 
         if (error) {
+          toast.error(
+            t(error.message || "Registration failed.", "فشل إنشاء الحساب."),
+            { duration: 4000 }
+          );
           setError(error.message);
         } else {
           toast.success(
@@ -66,11 +81,13 @@ export default function LoginRegisterPage() {
       }
     } catch (err) {
       console.error(err);
-      setError(
+      toast.error(
         isLogin
           ? t("Login failed.", "فشل تسجيل الدخول.")
-          : t("Registration failed.", "فشل إنشاء الحساب.")
+          : t("Registration failed.", "فشل إنشاء الحساب."),
+        { duration: 4000 }
       );
+      setError(err.message);
     } finally {
       setLoading(false);
     }
