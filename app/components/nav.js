@@ -1,23 +1,37 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { useLang } from "../context/LangContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
   const { lang, toggleLang } = useLang();
+  const { user, signOut } = useAuth();
 
   const t = (en, ar) => (lang === "en" ? en : ar);
 
-  // ✅ مراقبة التمرير
+  // ✅ تأثير التمرير
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // ✅ إغلاق القائمة المنسدلة عند النقر بالخارج
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const navLinks = [
@@ -48,7 +62,7 @@ export default function Navbar() {
         </p>
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* زر الموبايل */}
       <button
         onClick={() => setOpen(!open)}
         className="text-orange-400 text-2xl md:hidden"
@@ -56,7 +70,7 @@ export default function Navbar() {
         {open ? <X /> : <Menu />}
       </button>
 
-      {/* Links */}
+      {/* روابط القائمة */}
       <ul
         className={`${
           open
@@ -76,18 +90,65 @@ export default function Navbar() {
           </li>
         ))}
 
-        {/* Language Switch */}
+        {/* تبديل اللغة */}
         <li>
           <button
             onClick={toggleLang}
-            className={`${
+            className={`px-3 py-1 border rounded-md transition ${
               scrolled
-                ? "px-3 py-1 bg-orange-500/20 border border-orange-500 rounded-md text-orange-100 hover:bg-orange-500 hover:text-black transition"
-                : "px-3 py-1 bg-orange-500/20 border border-orange-500 rounded-md text-orange-300 hover:bg-orange-500 hover:text-black transition"
+                ? "bg-orange-500/20 border-orange-500 text-orange-100 hover:bg-orange-500 hover:text-black"
+                : "bg-orange-500/20 border-orange-500 text-orange-300 hover:bg-orange-500 hover:text-black"
             }`}
           >
             {lang === "en" ? "العربية" : "English"}
           </button>
+        </li>
+
+        {/* حساب المستخدم */}
+        <li className="relative" ref={dropdownRef}>
+          {user ? (
+            <>
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-2 text-orange-400 font-medium hover:text-orange-300 transition"
+              >
+                <User className="w-5 h-5" />
+                {user.email?.split("@")[0] || t("Account", "الحساب")}
+              </button>
+
+              {dropdownOpen && (
+                <div
+                  className={`absolute ${
+                    lang === "ar" ? "left-0" : "right-0"
+                  } mt-2 w-40 bg-white text-gray-800 rounded-lg shadow-lg py-2 z-50`}
+                >
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 hover:bg-gray-100 text-sm"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    {t("Profile", "الملف الشخصي")}
+                  </Link>
+                  <button
+                    onClick={() => {
+                      signOut();
+                      setDropdownOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-red-600"
+                  >
+                    {t("Logout", "تسجيل الخروج")}
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <Link
+              href="/login"
+              className="text-sm bg-orange-500 text-black px-3 py-1 rounded-md hover:bg-orange-400 transition"
+            >
+              {t("Login", "تسجيل الدخول")}
+            </Link>
+          )}
         </li>
       </ul>
     </nav>

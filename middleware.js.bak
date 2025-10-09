@@ -1,0 +1,39 @@
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { NextResponse } from "next/server";
+
+export async function middleware(req) {
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req, res });
+
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    // السماح بالوصول لصفحات auth دائماً
+    if (req.nextUrl.pathname.startsWith("/auth")) {
+      return res;
+    }
+
+    // إذا لم يكن هناك جلسة وليس في صفحة تسجيل الدخول
+    if (!session && req.nextUrl.pathname !== "/login") {
+      const redirectUrl = new URL("/login", req.url);
+      return NextResponse.redirect(redirectUrl);
+    }
+
+    // إذا كان هناك جلسة ويحاول الوصول لصفحة تسجيل الدخول
+    if (session && req.nextUrl.pathname === "/login") {
+      const redirectUrl = new URL("/", req.url);
+      return NextResponse.redirect(redirectUrl);
+    }
+
+    return res;
+  } catch (error) {
+    console.error("Middleware error:", error);
+    return res;
+  }
+}
+
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+};
