@@ -52,14 +52,11 @@ export default function Navbar() {
       <div className="flex flex-col">
         <Link
           href="/"
-          className="text-2xl font-bold tracking-wide justify-center flex items-center"
+          className="text-4xl font-bold tracking-wide justify-center flex items-center"
           dir="ltr"
         >
           <span className="text-orange-400">A</span>PSC
         </Link>
-        <p className="text-xs text-gray-300 tracking-widest">
-          {t("Travel made easy", "السفر أصبح أسهل")}
-        </p>
       </div>
 
       {/* زر الموبايل */}
