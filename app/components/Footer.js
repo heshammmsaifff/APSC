@@ -24,7 +24,10 @@ export default function Footer() {
           {/* 1️⃣ العمود الأول - الشعار */}
           <div>
             <h2 className="text-xl font-bold text-orange-400 mb-3">
-              {t("Arabistan Public Service Company", "عربستان للخدمات العامة")}
+              {t(
+                "Arabistan Group Public Service",
+                "عربستان جروب للخدمات العامة"
+              )}
             </h2>
             <p className="text-sm leading-relaxed mb-4">
               {t(
@@ -66,7 +69,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/book" className="hover:text-orange-400 transition">
+                <Link
+                  href="/services"
+                  className="hover:text-orange-400 transition"
+                >
                   {t("Book now!", "إحجز الآن!")}
                 </Link>
               </li>

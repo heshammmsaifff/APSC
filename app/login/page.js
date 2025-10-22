@@ -254,6 +254,19 @@ export default function LoginRegisterPage() {
           </div>
 
           {/* الزر */}
+
+          {isLogin && (
+            <div className="text-right">
+              <button
+                type="button"
+                onClick={() => router.push("/forgot-password")}
+                className="text-sm text-blue-600 hover:underline"
+              >
+                {t("Forgot your password?", "نسيت كلمة المرور؟")}
+              </button>
+            </div>
+          )}
+
           <button
             type="submit"
             disabled={loading}

@@ -39,7 +39,7 @@ export default function Hero() {
           {t(
             <>
               <span className="text-5xl block font-semibold mb-2 tracking-wide text-orange-400/90">
-                Arabistan Public Service Company
+                Arabistan Group Public Service
               </span>
               <span className="text-5xl">
                 Begin your{" "}
@@ -49,7 +49,7 @@ export default function Hero() {
             </>,
             <>
               <span className="block font-semibold mb-2 text-orange-400/90">
-                عربستان للخدمات العامة
+                عربستان جروب للخدمات العامة
               </span>
               <span>ابدأ مغامراتك معنا</span>
             </>

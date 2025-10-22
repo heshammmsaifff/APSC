@@ -36,7 +36,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t("Home", "الرئيسية"), href: "/" },
-    { label: t("Book", "احجز"), href: "/book" },
+    { label: t("Book", "احجز"), href: "/services" },
     { label: t("Locations", "الوجهات"), href: "/locations" },
     { label: t("Contact", "اتصل بنا"), href: "/contact" },
   ];
@@ -55,7 +55,7 @@ export default function Navbar() {
           className="text-4xl font-bold tracking-wide justify-center flex items-center"
           dir="ltr"
         >
-          <span className="text-orange-400">A</span>PSC
+          <span className="text-orange-400">A</span>GPS
         </Link>
       </div>
 

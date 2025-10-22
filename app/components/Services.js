@@ -4,12 +4,11 @@ import { useLang } from "../context/LangContext";
 import {
   FaPlane,
   FaTag,
-  FaTrain,
-  FaUtensils,
   FaHotel,
   FaShieldAlt,
+  FaPassport,
+  FaGlobe,
 } from "react-icons/fa";
-
 export default function Services() {
   const { lang } = useLang();
   const t = (en, ar) => (lang === "en" ? en : ar);
@@ -32,22 +31,6 @@ export default function Services() {
       ),
     },
     {
-      icon: <FaTrain className="text-4xl text-orange-500" />,
-      title: t("Railway Bookings", "حجوزات القطارات"),
-      desc: t(
-        "Book your train tickets easily with instant confirmation.",
-        "احجز تذاكر القطار بسهولة واحصل على تأكيد فوري."
-      ),
-    },
-    {
-      icon: <FaUtensils className="text-4xl text-orange-500" />,
-      title: t("Food & Drinks", "مأكولات ومشروبات"),
-      desc: t(
-        "Enjoy top-quality meals and beverages during your trip.",
-        "استمتع بأفضل الوجبات والمشروبات أثناء رحلتك."
-      ),
-    },
-    {
       icon: <FaHotel className="text-4xl text-orange-500" />,
       title: t("Hotels", "الفنادق"),
       desc: t(
@@ -61,6 +44,25 @@ export default function Services() {
       desc: t(
         "We prioritize your safety and comfort at every step.",
         "نضع سلامتك وراحتك في المقام الأول في كل خطوة."
+      ),
+    },
+    {
+      icon: <FaPassport className="text-4xl text-orange-500" />,
+      title: t("Europe Travel Files", "تجهيز ملفات السياحة إلى أوروبا"),
+      desc: t(
+        "Complete assistance with preparing and organizing your Europe travel documents.",
+        "نقدّم لك كل المساعدة في تجهيز وتنظيم ملفات السفر إلى أوروبا."
+      ),
+    },
+    {
+      icon: <FaGlobe className="text-4xl text-orange-500" />,
+      title: t(
+        "Visas & Middle East Bookings",
+        "توفير تأشيرات السياحة والحجوزات الفندقية لدول الشرق الأوسط"
+      ),
+      desc: t(
+        "We handle tourist visas and hotel bookings across Middle Eastern destinations.",
+        "نقوم بتوفير تأشيرات السياحة والحجوزات الفندقية لمختلف دول الشرق الأوسط."
       ),
     },
   ];
@@ -100,6 +102,22 @@ export default function Services() {
           </motion.div>
         ))}
       </div>
+
+      {/* زر عرض جميع الخدمات */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="mt-16"
+      >
+        <a
+          href="/services"
+          className="inline-block  bg-orange-500 hover:bg-orange-400 hover:scale-90 text-white font-medium py-3 px-8 rounded-full shadow hover:from-blue-700 hover:to-indigo-700 transition"
+        >
+          {t("View All Services", "عرض جميع الخدمات")}
+        </a>
+      </motion.div>
     </section>
   );
 }
