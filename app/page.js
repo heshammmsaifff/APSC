@@ -11,7 +11,6 @@ import ContactSection from "./components/ContactSection";
 export default function Home() {
   const { user, loading } = useAuth();
 
-  // أثناء التحميل فقط (يعني جلب بيانات المستخدم)
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">

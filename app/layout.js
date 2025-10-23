@@ -6,7 +6,7 @@ import LayoutWrapper from "./components/LayoutWrapper";
 import { Toaster } from "react-hot-toast";
 
 export const metadata = {
-  title: "APSC",
+  title: "AGPS",
   description: "Travel easy",
 };
 
@@ -27,13 +27,13 @@ export default function RootLayout({ children }) {
             },
             success: {
               iconTheme: {
-                primary: "#4ade80", // أخضر جميل
+                primary: "#4ade80",
                 secondary: "#333",
               },
             },
             error: {
               iconTheme: {
-                primary: "#f87171", // أحمر ناعم
+                primary: "#f87171",
                 secondary: "#333",
               },
             },
