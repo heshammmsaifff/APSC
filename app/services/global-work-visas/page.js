@@ -122,7 +122,7 @@ export default function GlobalWorkVisasPage() {
   }
 
   return (
-    <div className="mt-15 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
+    <div className="mt-25 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
       <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
         {lang === "ar" ? "تأشيرات العمل لجميع دول العالم" : "Global Work Visas"}
       </h1>
@@ -156,7 +156,6 @@ export default function GlobalWorkVisasPage() {
           value={form.phone}
           onChange={(v) => handleInput("phone", v)}
           type="tel"
-          placeholder={lang === "ar" ? "0123456789" : "Enter your phone number"}
         />
 
         <div>

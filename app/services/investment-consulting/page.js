@@ -86,7 +86,7 @@ export default function InvestmentConsultingPage() {
   ];
 
   return (
-    <div className="mt-15 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
+    <div className="mt-25 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
       <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
         {lang === "ar"
           ? "الاستشارات الاستثمارية"
@@ -114,9 +114,6 @@ export default function InvestmentConsultingPage() {
           value={phone}
           onChange={setPhone}
           type="tel"
-          placeholder={
-            lang === "ar" ? "مثلاً: +201234567890" : "e.g. +201234567890"
-          }
         />
 
         <TextInput
@@ -158,7 +155,6 @@ export default function InvestmentConsultingPage() {
           value={budget}
           onChange={setBudget}
           type="number"
-          placeholder={lang === "ar" ? "مثلاً: 10000" : "e.g. 10000"}
         />
 
         <button

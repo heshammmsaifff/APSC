@@ -123,7 +123,7 @@ export default function EuropeVisaService() {
   }
 
   return (
-    <div className="mt-15 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
+    <div className="mt-25 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
       <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
         {lang === "ar"
           ? "تجهيز ملفات السياحة لأوروبا"
@@ -153,7 +153,7 @@ export default function EuropeVisaService() {
           value={email}
           onChange={setEmail}
           type="email"
-          placeholder={lang === "ar" ? "example@email.com" : "Enter your email"}
+          placeholder="example@email.com"
         />
 
         {/* رقم الهاتف */}
@@ -162,33 +162,52 @@ export default function EuropeVisaService() {
           value={phone}
           onChange={setPhone}
           type="tel"
-          placeholder={lang === "ar" ? "0123456789" : "Enter your phone number"}
+          placeholder={
+            lang === "ar" ? "أدخل رقم الهاتف" : "Enter your phone number"
+          }
         />
 
         {/* الملفات */}
+        <p className="m-5 font-bold text-green-800">
+          {lang === "ar"
+            ? "من فضلك تأكد من صحة البيانات و الملفات المرفقة"
+            : "Please ensure the accuracy of the provided information and attached files."}
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <FileInput
-            label="جواز السفر"
+            label={lang === "ar" ? "جواز السفر" : "Passport"}
             onChange={(e) => handleFileChange(e, "passport")}
           />
           <FileInput
-            label="شهادة الميلاد"
+            label={lang === "ar" ? "شهادة الميلاد" : "Birth Certificate"}
             onChange={(e) => handleFileChange(e, "birthCertificate")}
           />
           <FileInput
-            label="كشف حساب بنكي (آخر 6 شهور)"
+            label={
+              lang === "ar"
+                ? "كشف حساب بنكي لاخر 6 شهور"
+                : "Bank Statement 'for Last 6 Months' "
+            }
             onChange={(e) => handleFileChange(e, "bankStatement")}
           />
           <FileInput
-            label="إيصال مرافق"
+            label={lang === "ar" ? "فاتورة مرافق حديثة" : "Recent Utility Bill"}
             onChange={(e) => handleFileChange(e, "utilityBill")}
           />
           <FileInput
-            label="صورة شخصية بخلفية بيضاء"
+            label={
+              lang === "ar"
+                ? "صورة شخصية بخلفية بيضاء"
+                : "Personal Photo with White Background"
+            }
             onChange={(e) => handleFileChange(e, "personalPhoto")}
           />
           <FileInput
-            label="إيصال تحويل رسوم تجهيز الملف 150 دولار امريكي الي رقم حساب  (0000000000000)"
+            label={
+              lang === "ar"
+                ? "إيصال تحويل المبلغ 150 دولار أمريكي"
+                : "Transfer Receipt of 150 USD"
+            }
             onChange={(e) => handleFileChange(e, "transferReceipt")}
           />
         </div>

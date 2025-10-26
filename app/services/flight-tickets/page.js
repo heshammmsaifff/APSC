@@ -149,7 +149,7 @@ export default function FlightTicketsPage() {
   return (
     <div
       dir={lang === "ar" ? "rtl" : "ltr"}
-      className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex justify-center items-center py-10 px-4"
+      className="mt-15 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex justify-center items-center py-10 px-4"
     >
       <form
         onSubmit={handleSubmit}
@@ -214,8 +214,9 @@ export default function FlightTicketsPage() {
           </div>
         </div>
         <p className="mt-6 text-green-800 font-bold">
-          ادخل متوسط تاريخ الرحلة و سنرسل لك الرحلات المتاحة الي وجهتك خلال تلك
-          الفترة
+          {lang === "ar"
+            ? "أدخل متوسط تاريخ الرحلة و سنرسل لك الرحلات المتاحة إلي وجهتك خلال الفترة المحددة."
+            : "Enter the average flight date and we will send you available flights to your destination during the specified period."}
         </p>
         <div className="flex gap-4">
           <div className="flex-1">

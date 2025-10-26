@@ -143,7 +143,7 @@ export default function MiddleEastVisasPage() {
   return (
     <div
       dir={lang === "ar" ? "rtl" : "ltr"}
-      className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex justify-center items-center py-10 px-4"
+      className="mt-15 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex justify-center items-center py-10 px-4"
     >
       <form
         onSubmit={handleSubmit}
@@ -152,7 +152,7 @@ export default function MiddleEastVisasPage() {
         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
           {t(
             "Tourist Visas & Hotel Bookings",
-            "تأشيرات السياحة والحجوزات الفندقية"
+            "تأشيرات السياحة والحجوزات الفندقية في دول الشرق الأوسط"
           )}
         </h2>
 

@@ -122,7 +122,7 @@ export default function GlobalJobsPage() {
   ];
 
   return (
-    <div className="mt-15 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
+    <div className="mt-25 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
       <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
         {lang === "ar"
           ? "توفير العمل في جميع دول العالم"
@@ -150,7 +150,6 @@ export default function GlobalJobsPage() {
           value={phone}
           onChange={setPhone}
           type="tel"
-          placeholder={lang === "ar" ? "0123456789" : "Enter your phone number"}
         />
 
         <TextInput
@@ -187,9 +186,6 @@ export default function GlobalJobsPage() {
           label={lang === "ar" ? "المهنة" : "Profession"}
           value={profession}
           onChange={setProfession}
-          placeholder={
-            lang === "ar" ? "مثلاً: مهندس برمجيات" : "e.g. Software Engineer"
-          }
         />
 
         <TextInput
@@ -197,11 +193,14 @@ export default function GlobalJobsPage() {
           value={experience}
           onChange={setExperience}
           type="number"
-          placeholder={lang === "ar" ? "مثلاً: 5" : "e.g. 5"}
         />
 
         {/* الملفات */}
-        <p>برجاء ارفاق الهوية اذا كنت مواطن - الإقامة اذا كنت أجنبي</p>
+        <p>
+          {lang === "ar"
+            ? "برجاء ارفاق الهوية إذا كنت مواطن، أو الإقامة إذا كنت أجنبي"
+            : "Please attach your ID if you are a citizen, or your residency if you are a foreigner."}
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <FileInput
