@@ -59,6 +59,13 @@ export default function ProfilePage() {
           name: "work_contract_applications",
           label: t("Work Contracts", "عقود العمل في أوروبا"),
         },
+        {
+          name: "events_service_requests",
+          label: t(
+            "Event & Travel Organization",
+            "تنظيم المؤتمرات والرحلات السياحية"
+          ),
+        },
       ];
 
       let all = [];

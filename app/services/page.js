@@ -102,18 +102,18 @@ export default function ServicesPage() {
         en: "Specialized investment advice from a team of experts to help you make well-informed financial and investment decisions.",
       },
     },
-    // {
-    //   slug: "events-and-travel",
-    //   icon: <FaCalendarAlt className="text-6xl text-orange-500" />,
-    //   title: {
-    //     ar: "تجهيز وتنظيم الحفلات والمؤتمرات والرحلات",
-    //     en: "Events, Conferences & Travel Planning",
-    //   },
-    //   desc: {
-    //     ar: "تنظيم شامل للفعاليات والحفلات العامة والمؤتمرات والرحلات السياحية، من التخطيط حتى التنفيذ.",
-    //     en: "Full-service planning for events, public parties, conferences and tour packages — from planning to execution.",
-    //   },
-    // },
+    {
+      slug: "events-and-travel",
+      icon: <FaCalendarAlt className="text-6xl text-orange-500" />,
+      title: {
+        ar: "تجهيز وتنظيم الحفلات والمؤتمرات والرحلات",
+        en: "Events, Conferences & Travel Planning",
+      },
+      desc: {
+        ar: "تنظيم شامل للفعاليات والحفلات العامة والمؤتمرات والرحلات السياحية، من التخطيط حتى التنفيذ.",
+        en: "Full-service planning for events, public parties, conferences and tour packages — from planning to execution.",
+      },
+    },
   ];
 
   return (

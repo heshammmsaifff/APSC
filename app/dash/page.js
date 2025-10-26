@@ -94,6 +94,25 @@ const SERVICES = {
       ["إيصال التحويل", "transfer_receipt_url"],
     ],
   },
+  eventOrganization: {
+    key: "eventOrganization",
+    title: "تجهيز وتنظيم المؤتمرات والحفلات العامة والرحلات السياحية",
+    table: "events_service_requests",
+
+    displayFields: [
+      "full_name",
+      "phone_number",
+      "email",
+      "event_type",
+      "special_requests",
+    ],
+    dateField: "created_at",
+    fileFields: [
+      ["بطاقة الهوية أو جواز السفر", "id_card_url"],
+      ["صور المكان / القاعة", "venue_photos_url"],
+      ["إيصال التحويل", "transfer_receipt_url"],
+    ],
+  },
 };
 
 export default function DashboardPage() {
