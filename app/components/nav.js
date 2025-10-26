@@ -37,7 +37,7 @@ export default function Navbar() {
   const navLinks = [
     { label: t("Home", "الرئيسية"), href: "/" },
     { label: t("Book", "احجز"), href: "/services" },
-    { label: t("Locations", "الوجهات"), href: "/locations" },
+    // { label: t("Locations", "الوجهات"), href: "/locations" },
     { label: t("Contact", "اتصل بنا"), href: "/contact" },
   ];
 

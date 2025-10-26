@@ -113,6 +113,14 @@ const SERVICES = {
       ["إيصال التحويل", "transfer_receipt_url"],
     ],
   },
+  contactRequests: {
+    key: "contactRequests",
+    title: "طلبات التواصل",
+    table: "contact_requests",
+    displayFields: ["full_name", "email", "phone", "subject", "message"],
+    dateField: "created_at",
+    fileFields: [],
+  },
 };
 
 export default function DashboardPage() {

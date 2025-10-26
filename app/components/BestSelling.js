@@ -111,7 +111,7 @@ export default function BestSelling() {
       </div>
 
       {/* زر عرض المزيد */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
@@ -123,7 +123,7 @@ export default function BestSelling() {
             {t("View More", "عرض المزيد")}
           </button>
         </Link>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }
