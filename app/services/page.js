@@ -118,9 +118,12 @@ export default function ServicesPage() {
 
   return (
     <main
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-20 px-6 md:px-20"
+      className="relative min-h-screen bg-cover bg-center bg-no-repeat py-20 px-6 md:px-20"
+      style={{ backgroundImage: "url('/services.jpg')" }}
       dir={lang === "ar" ? "rtl" : "ltr"}
     >
+      {/* طبقة التظليل */}
+      <div className="absolute inset-0 bg-black/30"></div>
       {/* العنوان */}
       <motion.h1
         initial={{ opacity: 0, y: -40 }}

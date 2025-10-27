@@ -123,119 +123,126 @@ export default function EuropeVisaService() {
   }
 
   return (
-    <div className="mt-25 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
-      <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
-        {lang === "ar"
-          ? "تجهيز ملفات السياحة لأوروبا"
-          : "Europe Visa File Preparation"}
-      </h1>
-
-      <p className="text-center text-gray-600 mb-6">
-        {lang === "ar"
-          ? "يرجى إرفاق جميع الملفات المطلوبة قبل الضغط على إرسال."
-          : "Please upload all required documents before submitting."}
-      </p>
-
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* الاسم */}
-        <TextInput
-          label={lang === "ar" ? "الاسم الكامل" : "Full Name"}
-          value={fullName}
-          onChange={setFullName}
-          placeholder={
-            lang === "ar" ? "اكتب اسمك الكامل" : "Enter your full name"
-          }
-        />
-
-        {/* البريد الإلكتروني */}
-        <TextInput
-          label={lang === "ar" ? "البريد الإلكتروني" : "Email"}
-          value={email}
-          onChange={setEmail}
-          type="email"
-          placeholder="example@email.com"
-        />
-
-        {/* رقم الهاتف */}
-        <TextInput
-          label={lang === "ar" ? "رقم الهاتف" : "Phone Number"}
-          value={phone}
-          onChange={setPhone}
-          type="tel"
-          placeholder={
-            lang === "ar" ? "أدخل رقم الهاتف" : "Enter your phone number"
-          }
-        />
-
-        {/* الملفات */}
-        <p className="m-5 font-bold text-green-800">
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{ backgroundImage: "url('/europe-travel.jpg')" }}
+    >
+      <div className="mt-25 mb-25 max-w-2xl w-full bg-white/70 shadow-lg rounded-2xl p-8 border border-gray-100 backdrop-blur-sm">
+        <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
           {lang === "ar"
-            ? "من فضلك تأكد من صحة البيانات و الملفات المرفقة"
-            : "Please ensure the accuracy of the provided information and attached files."}
+            ? "تجهيز ملفات السياحة لأوروبا"
+            : "Europe Visa File Preparation"}
+        </h1>
+
+        <p className="text-center text-gray-600 mb-6">
+          {lang === "ar"
+            ? "يرجى إرفاق جميع الملفات المطلوبة قبل الضغط على إرسال."
+            : "Please upload all required documents before submitting."}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <FileInput
-            label={lang === "ar" ? "جواز السفر" : "Passport"}
-            onChange={(e) => handleFileChange(e, "passport")}
-          />
-          <FileInput
-            label={lang === "ar" ? "شهادة الميلاد" : "Birth Certificate"}
-            onChange={(e) => handleFileChange(e, "birthCertificate")}
-          />
-          <FileInput
-            label={
-              lang === "ar"
-                ? "كشف حساب بنكي لاخر 6 شهور"
-                : "Bank Statement 'for Last 6 Months' "
-            }
-            onChange={(e) => handleFileChange(e, "bankStatement")}
-          />
-          <FileInput
-            label={lang === "ar" ? "فاتورة مرافق حديثة" : "Recent Utility Bill"}
-            onChange={(e) => handleFileChange(e, "utilityBill")}
-          />
-          <FileInput
-            label={
-              lang === "ar"
-                ? "صورة شخصية بخلفية بيضاء"
-                : "Personal Photo with White Background"
-            }
-            onChange={(e) => handleFileChange(e, "personalPhoto")}
-          />
-          <FileInput
-            label={
-              lang === "ar"
-                ? "إيصال تحويل المبلغ 150 دولار أمريكي"
-                : "Transfer Receipt of 150 USD"
-            }
-            onChange={(e) => handleFileChange(e, "transferReceipt")}
-          />
-        </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-200 disabled:opacity-60"
-        >
-          {loading
-            ? lang === "ar"
-              ? "جارٍ الإرسال..."
-              : "Uploading..."
-            : lang === "ar"
-            ? "إرسال الملفات"
-            : "Submit Files"}
-        </button>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* الاسم */}
+          <TextInput
+            label={lang === "ar" ? "الاسم الكامل" : "Full Name"}
+            value={fullName}
+            onChange={setFullName}
+            placeholder={
+              lang === "ar" ? "اكتب اسمك الكامل" : "Enter your full name"
+            }
+          />
 
-        {message && (
-          <p
-            className={`text-center mt-4 font-semibold ${
-              message.includes("✅") ? "text-green-600" : "text-red-600"
-            }`}
-          >
-            {message}
+          {/* البريد الإلكتروني */}
+          <TextInput
+            label={lang === "ar" ? "البريد الإلكتروني" : "Email"}
+            value={email}
+            onChange={setEmail}
+            type="email"
+            placeholder="example@email.com"
+          />
+
+          {/* رقم الهاتف */}
+          <TextInput
+            label={lang === "ar" ? "رقم الهاتف" : "Phone Number"}
+            value={phone}
+            onChange={setPhone}
+            type="tel"
+            placeholder={
+              lang === "ar" ? "أدخل رقم الهاتف" : "Enter your phone number"
+            }
+          />
+
+          <p className="m-5 font-bold text-green-800">
+            {lang === "ar"
+              ? "من فضلك تأكد من صحة البيانات و الملفات المرفقة"
+              : "Please ensure the accuracy of the provided information and attached files."}
           </p>
-        )}
-      </form>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FileInput
+              label={lang === "ar" ? "جواز السفر" : "Passport"}
+              onChange={(e) => handleFileChange(e, "passport")}
+            />
+            <FileInput
+              label={lang === "ar" ? "شهادة الميلاد" : "Birth Certificate"}
+              onChange={(e) => handleFileChange(e, "birthCertificate")}
+            />
+            <FileInput
+              label={
+                lang === "ar"
+                  ? "كشف حساب بنكي لاخر 6 شهور"
+                  : "Bank Statement (Last 6 Months)"
+              }
+              onChange={(e) => handleFileChange(e, "bankStatement")}
+            />
+            <FileInput
+              label={
+                lang === "ar" ? "فاتورة مرافق حديثة" : "Recent Utility Bill"
+              }
+              onChange={(e) => handleFileChange(e, "utilityBill")}
+            />
+            <FileInput
+              label={
+                lang === "ar"
+                  ? "صورة شخصية بخلفية بيضاء"
+                  : "Personal Photo with White Background"
+              }
+              onChange={(e) => handleFileChange(e, "personalPhoto")}
+            />
+            <FileInput
+              label={
+                lang === "ar"
+                  ? "إيصال تحويل المبلغ 150 دولار أمريكي"
+                  : "Transfer Receipt of 150 USD"
+              }
+              onChange={(e) => handleFileChange(e, "transferReceipt")}
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-200 disabled:opacity-60"
+          >
+            {loading
+              ? lang === "ar"
+                ? "جارٍ الإرسال..."
+                : "Uploading..."
+              : lang === "ar"
+              ? "إرسال الملفات"
+              : "Submit Files"}
+          </button>
+
+          {message && (
+            <p
+              className={`text-center mt-4 font-semibold ${
+                message.includes("✅") ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {message}
+            </p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

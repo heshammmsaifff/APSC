@@ -143,11 +143,14 @@ export default function MiddleEastVisasPage() {
   return (
     <div
       dir={lang === "ar" ? "rtl" : "ltr"}
-      className="mt-15 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex justify-center items-center py-10 px-4"
+      className="mt-15 min-h-screen bg-white/70 shadow-lg flex justify-center items-center py-10 px-4 bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/pyramids.jpg')",
+      }}
     >
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-xl max-w-lg w-full border border-gray-100"
+        className="bg-white/70 p-8 rounded-2xl shadow-xl max-w-lg w-full border border-white/50 backdrop-blur-sm"
       >
         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
           {t(

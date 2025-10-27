@@ -18,7 +18,7 @@ export default function ContactPage() {
 
   const t = {
     ar: {
-      title: "📩 تواصل معنا",
+      title: "تواصل معنا",
       name: "الاسم الكامل",
       email: "البريد الإلكتروني",
       phone: "رقم الهاتف",
@@ -26,12 +26,12 @@ export default function ContactPage() {
       message: "الرسالة",
       send: "إرسال",
       sending: "جارٍ الإرسال...",
-      success: "تم إرسال الرسالة بنجاح ✅",
+      success: "تم إرسال الرسالة بنجاح",
       error: "حدث خطأ أثناء الإرسال",
       fillRequired: "من فضلك أكمل الحقول المطلوبة",
     },
     en: {
-      title: "📩 Contact Us",
+      title: "Contact Us",
       name: "Full Name",
       email: "Email",
       phone: "Phone Number",
@@ -39,7 +39,7 @@ export default function ContactPage() {
       message: "Message",
       send: "Send",
       sending: "Sending...",
-      success: "Message sent successfully ✅",
+      success: "Message sent successfully",
       error: "An error occurred while sending",
       fillRequired: "Please fill all required fields",
     },
@@ -89,77 +89,75 @@ export default function ContactPage() {
 
   return (
     <div
-      className={`max-w-2xl mx-auto p-6 bg-white rounded-2xl shadow mt-24 ${
-        lang === "ar" ? "text-right" : "text-left"
-      }`}
+      className="mt-15 min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat"
       dir={lang === "ar" ? "rtl" : "ltr"}
+      style={{ backgroundImage: "url('/contact.jpg')" }}
     >
-      <h1 className="text-2xl font-bold mb-4 text-center">{tr.title}</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm mb-1">{tr.name} *</label>
-          <input
-            name="full_name"
-            value={form.full_name}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-        </div>
+      <div
+        className={`max-w-2xl w-full bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl p-8 transition-all hover:shadow-blue-200 ${
+          lang === "ar" ? "text-right" : "text-left"
+        }`}
+      >
+        <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">
+          {tr.title}
+        </h1>
 
-        <div>
-          <label className="block text-sm mb-1">{tr.email} *</label>
-          <input
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {[
+            { name: "full_name", label: tr.name, required: true },
+            { name: "email", label: tr.email, type: "email", required: true },
+            { name: "phone", label: tr.phone },
+            { name: "subject", label: tr.subject, required: true },
+          ].map((field) => (
+            <div key={field.name}>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">
+                {field.label}
+                {field.required && " *"}
+              </label>
+              <input
+                type={field.type || "text"}
+                name={field.name}
+                value={form[field.name]}
+                onChange={handleChange}
+                required={field.required}
+                className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              />
+            </div>
+          ))}
 
-        <div>
-          <label className="block text-sm mb-1">{tr.phone}</label>
-          <input
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
-        </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              {tr.message} *
+            </label>
+            <textarea
+              name="message"
+              rows={5}
+              value={form.message}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+            />
+          </div>
 
-        <div>
-          <label className="block text-sm mb-1">{tr.subject} *</label>
-          <input
-            name="subject"
-            value={form.subject}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-        </div>
+          <p className="font-bold text-green-800">
+            {lang === "ar"
+              ? "عند الضغط الضفط علي ارسال سيتم استقبال رسالتك و التواصل معك بأقرب وقت ممكن"
+              : "By clicking send, your message will be received and we will get back to you as soon as possible."}
+          </p>
 
-        <div>
-          <label className="block text-sm mb-1">{tr.message} *</label>
-          <textarea
-            name="message"
-            rows={5}
-            value={form.message}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-        >
-          {loading ? tr.sending : tr.send}
-        </button>
-      </form>
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 rounded-xl text-white font-semibold transition-all duration-300 ${
+              loading
+                ? "bg-blue-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 active:scale-95"
+            }`}
+          >
+            {loading ? tr.sending : tr.send}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

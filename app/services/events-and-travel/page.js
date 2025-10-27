@@ -126,150 +126,163 @@ export default function EventsService() {
   }
 
   return (
-    <div className="mt-25 max-w-2xl mx-auto my-10 bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
-      <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
-        {lang === "ar"
-          ? "خدمة تنظيم المؤتمرات و الحفلات و الرحلات السياحية"
-          : "Event, Conference & Tour Organization Service"}
-      </h1>
+    <div
+      className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('/party.jpg')" }}
+    >
+      {/* طبقة ضبابية وتدرج خفيف فوق الخلفية */}
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30 backdrop-blur-sm"></div> */}
 
-      <p className="text-center text-gray-600 mb-6">
-        {lang === "ar"
-          ? "يرجى إدخال جميع البيانات المطلوبة ورفع الملفات اللازمة قبل إرسال الطلب."
-          : "Please fill all required fields and upload documents before submitting."}
-      </p>
-
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <TextInput
-          label={lang === "ar" ? "الاسم الكامل" : "Full Name"}
-          value={fullName}
-          onChange={setFullName}
-          placeholder={
-            lang === "ar" ? "اكتب اسمك الكامل" : "Enter your full name"
-          }
-        />
-
-        <TextInput
-          label={lang === "ar" ? "البريد الإلكتروني" : "Email"}
-          value={email}
-          onChange={setEmail}
-          type="email"
-          placeholder="example@email.com"
-        />
-
-        <TextInput
-          label={lang === "ar" ? "رقم الهاتف" : "Phone Number"}
-          value={phone}
-          onChange={setPhone}
-          type="tel"
-          placeholder={
-            lang === "ar" ? "أدخل رقم الهاتف" : "Enter your phone number"
-          }
-        />
-
-        <SelectInput
-          label={lang === "ar" ? "نوع الحدث" : "Event Type"}
-          value={eventType}
-          onChange={setEventType}
-          options={
-            lang === "ar"
-              ? ["مؤتمر", "حفلة عامة", "رحلة سياحية"]
-              : ["Conference", "Public Event", "Tour"]
-          }
-        />
-
-        <TextInput
-          label={lang === "ar" ? "تاريخ الحدث" : "Event Date"}
-          value={eventDate}
-          onChange={setEventDate}
-          type="date"
-        />
-
-        <TextInput
-          label={lang === "ar" ? "الموقع المقترح" : "Suggested Location"}
-          value={location}
-          onChange={setLocation}
-          placeholder={
-            lang === "ar" ? "اكتب موقع إقامة الحدث" : "Enter the event location"
-          }
-        />
-
-        <TextInput
-          label={lang === "ar" ? "عدد الحضور المتوقع" : "Expected Guests"}
-          value={numGuests}
-          onChange={setNumGuests}
-          type="number"
-          placeholder={
-            lang === "ar" ? "اكتب عدد الحضور" : "Enter number of guests"
-          }
-        />
-
-        <TextArea
-          label={
-            lang === "ar" ? "طلبات أو ملاحظات خاصة" : "Special Requests / Notes"
-          }
-          value={specialRequests}
-          onChange={setSpecialRequests}
-          placeholder={
-            lang === "ar"
-              ? "اكتب أي تفاصيل إضافية هنا"
-              : "Add any special requirements or details"
-          }
-        />
-
-        <p className="m-5 font-bold text-green-800">
+      {/* محتوى الفورم */}
+      <div className="relative z-10 mt-25 mb-10 max-w-2xl w-full mx-auto bg-white/60 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-white/60">
+        <h1 className="text-3xl font-bold text-center mb-6 text-blue-700 drop-shadow-md">
           {lang === "ar"
-            ? "يرجى التأكد من إرفاق المستندات المطلوبة التالية:"
-            : "Please attach the required documents below:"}
+            ? "خدمة تنظيم المؤتمرات و الحفلات و الرحلات السياحية"
+            : "Event, Conference & Tour Organization Service"}
+        </h1>
+
+        <p className="text-center text-gray-800 mb-6">
+          {lang === "ar"
+            ? "يرجى إدخال جميع البيانات المطلوبة ورفع الملفات اللازمة قبل إرسال الطلب."
+            : "Please fill all required fields and upload documents before submitting."}
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <FileInput
-            label={lang === "ar" ? "الهوية الشخصية" : "ID Card"}
-            onChange={(e) => handleFileChange(e, "idCard")}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <TextInput
+            label={lang === "ar" ? "الاسم الكامل" : "Full Name"}
+            value={fullName}
+            onChange={setFullName}
+            placeholder={
+              lang === "ar" ? "اكتب اسمك الكامل" : "Enter your full name"
+            }
           />
-          <FileInput
+
+          <TextInput
+            label={lang === "ar" ? "البريد الإلكتروني" : "Email"}
+            value={email}
+            onChange={setEmail}
+            type="email"
+            placeholder="example@email.com"
+          />
+
+          <TextInput
+            label={lang === "ar" ? "رقم الهاتف" : "Phone Number"}
+            value={phone}
+            onChange={setPhone}
+            type="tel"
+            placeholder={
+              lang === "ar" ? "أدخل رقم الهاتف" : "Enter your phone number"
+            }
+          />
+
+          <SelectInput
+            label={lang === "ar" ? "نوع الحدث" : "Event Type"}
+            value={eventType}
+            onChange={setEventType}
+            options={
+              lang === "ar"
+                ? ["مؤتمر", "حفلة عامة", "رحلة سياحية"]
+                : ["Conference", "Public Event", "Tour"]
+            }
+          />
+
+          <TextInput
+            label={lang === "ar" ? "تاريخ الحدث" : "Event Date"}
+            value={eventDate}
+            onChange={setEventDate}
+            type="date"
+          />
+
+          <TextInput
+            label={lang === "ar" ? "الموقع المقترح" : "Suggested Location"}
+            value={location}
+            onChange={setLocation}
+            placeholder={
+              lang === "ar"
+                ? "اكتب موقع إقامة الحدث"
+                : "Enter the event location"
+            }
+          />
+
+          <TextInput
+            label={lang === "ar" ? "عدد الحضور المتوقع" : "Expected Guests"}
+            value={numGuests}
+            onChange={setNumGuests}
+            type="number"
+            placeholder={
+              lang === "ar" ? "اكتب عدد الحضور" : "Enter number of guests"
+            }
+          />
+
+          <TextArea
             label={
               lang === "ar"
-                ? "صور موقع الحدث (إن وجدت)"
-                : "Event Venue Photos (if any)"
+                ? "طلبات أو ملاحظات خاصة"
+                : "Special Requests / Notes"
             }
-            onChange={(e) => handleFileChange(e, "venuePhotos")}
-          />
-          <FileInput
-            label={
+            value={specialRequests}
+            onChange={setSpecialRequests}
+            placeholder={
               lang === "ar"
-                ? "إيصال التحويل المسبق"
-                : "Prepayment Transfer Receipt"
+                ? "اكتب أي تفاصيل إضافية هنا"
+                : "Add any special requirements or details"
             }
-            onChange={(e) => handleFileChange(e, "transferReceipt")}
           />
-        </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-200 disabled:opacity-60"
-        >
-          {loading
-            ? lang === "ar"
-              ? "جارٍ الإرسال..."
-              : "Submitting..."
-            : lang === "ar"
-            ? "إرسال الطلب"
-            : "Submit Request"}
-        </button>
-
-        {message && (
-          <p
-            className={`text-center mt-4 font-semibold ${
-              message.includes("✅") ? "text-green-600" : "text-red-600"
-            }`}
-          >
-            {message}
+          <p className="m-5 font-bold text-green-900">
+            {lang === "ar"
+              ? "يرجى التأكد من إرفاق المستندات المطلوبة التالية:"
+              : "Please attach the required documents below:"}
           </p>
-        )}
-      </form>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FileInput
+              label={lang === "ar" ? "الهوية الشخصية" : "ID Card"}
+              onChange={(e) => handleFileChange(e, "idCard")}
+            />
+            <FileInput
+              label={
+                lang === "ar"
+                  ? "صور موقع الحدث (إن وجدت)"
+                  : "Event Venue Photos (if any)"
+              }
+              onChange={(e) => handleFileChange(e, "venuePhotos")}
+            />
+            <FileInput
+              label={
+                lang === "ar"
+                  ? "إيصال التحويل المسبق"
+                  : "Prepayment Transfer Receipt"
+              }
+              onChange={(e) => handleFileChange(e, "transferReceipt")}
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-200 disabled:opacity-60 shadow-md"
+          >
+            {loading
+              ? lang === "ar"
+                ? "جارٍ الإرسال..."
+                : "Submitting..."
+              : lang === "ar"
+              ? "إرسال الطلب"
+              : "Submit Request"}
+          </button>
+
+          {message && (
+            <p
+              className={`text-center mt-4 font-semibold ${
+                message.includes("✅") ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {message}
+            </p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

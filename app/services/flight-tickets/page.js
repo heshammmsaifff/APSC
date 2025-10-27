@@ -149,11 +149,12 @@ export default function FlightTicketsPage() {
   return (
     <div
       dir={lang === "ar" ? "rtl" : "ltr"}
+      style={{ background: "url(/flight.jpg)", backgroundSize: "cover" }}
       className="mt-15 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex justify-center items-center py-10 px-4"
     >
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-xl max-w-lg w-full border border-gray-100"
+        className="bg-white/70 p-8 rounded-2xl shadow-xl max-w-lg w-full border border-white/50 backdrop-blur-sm"
       >
         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
           {t.title}
