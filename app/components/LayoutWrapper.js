@@ -13,13 +13,13 @@ export default function LayoutWrapper({ children }) {
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
       <body className="antialiased flex flex-col min-h-screen bg-white text-gray-900">
         {/* ✅ شريط التنقل دائم */}
-        <Navbar user={user} />
+        {/* <Navbar user={user} /> */}
 
         {/* ✅ محتوى الصفحة */}
         <main className="flex-grow">{children}</main>
 
         {/* ✅ الفوتر دائم */}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
